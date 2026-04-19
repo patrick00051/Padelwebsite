@@ -1,24 +1,50 @@
-function show(id) {
-    document.getElementById('list-view').classList.add('section-hidden');
-    document.getElementById('details-view').classList.add('section-hidden');
-
-    document.getElementById(id + '-view').classList.remove('section-hidden');
-
-    window.scrollTo(0,0);
+// ===== SELECT CLUB PAGE =====
+function selectClub(clubName) {
+    localStorage.setItem("club", clubName);
+    window.location.href = "b.html";
 }
 
-function goReg(mode) {
-    const p2Section = document.getElementById('player2-section');
-    const title = document.getElementById('title-display');
 
-    if (mode === "solo") {
-        p2Section.style.display = 'none';
-        title.innerText = "Solo Masters League";
-    } 
-    else {
-        p2Section.style.display = 'block';
-        title.innerText = "Spring Doubles Cup";
+// ===== BOOKING PAGE =====
+function book(btn) {
+
+    let date = document.getElementById("date").value;
+
+    if (!date) {
+        alert("Please select a date first ❗");
+        return;
     }
 
-    show('details');
+    let court = btn.parentElement.parentElement.querySelector("h2").innerText;
+    let time = btn.parentElement.innerText.replace("Book","").trim();
+    let club = localStorage.getItem("club");
+
+    let booking = {
+        club: club,
+        court: court,
+        time: time,
+        date: date
+    };
+
+    localStorage.setItem("booking", JSON.stringify(booking));
+
+    btn.innerText = "Selected";
+    btn.style.background = "green";
+}
+
+
+// ===== CHECKOUT PAGE =====
+function loadCheckout() {
+    let data = JSON.parse(localStorage.getItem("booking"));
+
+    if (data) {
+        document.getElementById("club").innerText = data.club;
+        document.getElementById("court").innerText = data.court;
+        document.getElementById("time").innerText = data.time;
+        document.getElementById("date").innerText = data.date;
+    }
+}
+
+function confirmBooking() {
+    alert("Booking Confirmed ✅");
 }
