@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Padel Store | Equipment & Gear</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="brand-text">Yalla Padel!</div>
+        <div>
+            <button class="nav-link" onclick="location.href='tournaments.html'">TOURNAMENTS</button>
+            <button class="nav-link" onclick="location.href='store.html'" style="color: #60a5fa;">STORE</button>
+            <div class="cart-container">
+                <button class="nav-link" onclick="toggleCart()">🛒 CART</button>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1 class="hero-title">Yalla Padel! STORE</h1>
+        <p class="hero-subtitle">Premium equipment </p>
+    </div>
+
+    <div class="container">
+        <div class="card-grid">
+
+
+<div class="product-card">
+    <div class="card-image">
+        <img src="racketphoto.png" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="card-content">
+        <h3 class="product-title">Pro Carbon Padel Racket</h3>
+        <div class="product-price">1,000 <span>EGP</span></div>
+        <p class="product-desc">Professional-grade carbon fiber racket with rough surface for maximum spin and control.</p>
+        
+        <!-- No options for racket -->
+        <div class="quantity-selector">
+            <button class="qty-btn" onclick="changeQty('racket', -1)">-</button>
+            <input type="number" id="racketQty" class="qty-input" value="1" min="1" readonly>
+            <button class="qty-btn" onclick="changeQty('racket', 1)">+</button>
+        </div>
+        
+        <button class="btn-action" onclick="addToCart('racket')">ADD TO CART</button>
+    </div>
+</div>
+
+
+
+            <div class="product-card">
+                <div class="card-image">
+                    <img src="ballsphoto.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">Premium Ball Pack (3 Cans)</h3>
+                    <div class="product-price">350 <span>EGP</span></div>
+                    <p class="product-desc">Official padel balls, pressure-sealed pack of 3 balls. Excellent bounce and durability.</p>
+                    
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty('balls', -1)">-</button>
+                        <input type="number" id="ballsQty" class="qty-input" value="1" min="1" readonly>
+                        <button class="qty-btn" onclick="changeQty('balls', 1)">+</button>
+                    </div>
+                    
+                    <button class="btn-action" onclick="addToCart('balls')">ADD TO CART</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image">
+                    <img src="kitphoto.png" style="width: 100%; height: 100%; object-fit: cover;">
+
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">Sport Kit</h3>
+                    <div class="product-price">1,500 <span>EGP</span></div>
+                    <p class="product-desc">Complete sport kit with breathable fabric, moisture-wicking technology.</p>
+                    
+                    <div class="options-group">
+                        <label class="options-label">Size:</label>
+                        <select id="kitSize" class="size-select">
+                            <option value="S"> (S)</option>
+                            <option value="M" selected> (M)</option>
+                            <option value="L"> (L)</option>
+                            <option value="XL"> (XL)</option>
+                        </select>
+                    </div>
+
+                    <div class="options-group">
+                        <label class="options-label">Color:</label>
+                        <select id="kitColor" class="color-select">
+                            <option value="White">White</option>
+                            <option value="Black" selected>Black</option>
+                            <option value="Navy">Navy</option>
+                        </select>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty('kit', -1)">-</button>
+                        <input type="number" id="kitQty" class="qty-input" value="1" min="1" readonly>
+                        <button class="qty-btn" onclick="changeQty('kit', 1)">+</button>
+                    </div>
+                    
+                    <button class="btn-action" onclick="addToCart('kit')">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #64748b;">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: <span id="cartTotal">0</span> EGP</div>
+            <button class="btn-action btn-checkout" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+   <script src="YallaPadel.js"></script>
+</body>
+</html>
