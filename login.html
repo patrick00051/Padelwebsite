@@ -1,0 +1,62 @@
+<!Doctype html>
+<head>
+<link rel="stylesheet" href="login.css">
+</head>
+
+<div class="container">
+ <div class="loginbox">
+    <img src="logo.jpeg" alt="Yalla Padel Logo" class="logo">
+    <p class="login-text"><b>Welcome back!</b><br> Please login to continue.</p>
+<form  onsubmit="return validate()">
+<input type="tel" id="pho" name="ph"  placeholder="phone number">
+<span id="phoneError" class="error"></span>
+
+<br>
+<input type="password" id="password" name="pass" placeholder="password">
+ <span id="passwordError" class="error"></span>
+ <br>
+ <a href="#" class="forgot">Forgot your password?</a>
+ <br>
+<button id="but" type="submit">Submit</button>
+<br>
+ <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+
+
+
+
+</form>
+</div>
+</div>
+
+<script>
+
+function validate(){
+    let valid = true;
+let phone= document.getElementById('pho').value;
+let password = document.getElementById("password").value;
+
+let phoneRegex = /^[0-9]{10,15}$/;
+
+
+document.getElementById("phoneError").innerText="";
+document.getElementById("passwordError").innerText="";
+
+
+ if(password.length < 8){
+        document.getElementById("passwordError").innerText="Password must be at least 8 characters.";
+        valid=false;
+    }
+
+    if(!phoneRegex.test(phone)){
+        document.getElementById("phoneError").innerText="Phone must be 10-15 digits.";
+        valid=false;
+    }
+    if(valid){
+        window.location.href = "home.html"; 
+    }
+return false;
+}
+
+
+</script>
+</bodY>
